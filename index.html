@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./index.css" />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Tính tiền cáp</h2>
+    <div class="row my-3">
+      <div class="col-4">
+        <select id="slLoaiKH" class="form-select" onchange="myFunction()">
+          <option value="0">Chon loại khách hàng</option>
+          <option value="1">Nhà Dân</option>
+          <option value="2">Doanh Nghiệp</option>
+        </select>
+      </div>
+      <div class="col-4">
+        <input type="text" placeholder="Nhập mã khách hàng" id="txtB4MaKH" class="form-control" />
+      </div>
+      <div class="col-4">
+        <input type="number" placeholder="Nhập số kênh cao cấp" id="nB4SoKenhCC" class="form-control" />
+      </div>
+      <div class="col-4 mt-3" style="display: none" id="DivSoketNoi">
+        <input type="number" placeholder="Nhập số kết nối" id="nB4SoKetNoi" class="form-control" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <button id="btnTinhTienCap" class="btn btn-primary rounded-pill mb-3">Tính Tiền Cáp</button>
+      </div>
+    </div>
+    <div class="alert alert-danger">
+      <a><i class="fa-regular fa-hand-point-right"></i> </a>
+      <span id="ketQua4"></span>
+    </div>
+    <div class="container w-50">
+      <div class="d-flex align-items-start">
+        <div class="nav flex-column nav-pills me-3 w-25" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <button
+            class="nav-link active"
+            id="v-pills-home-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#v-pills-home"
+            type="button"
+            role="tab"
+            aria-controls="v-pills-home"
+            aria-selected="true">
+            Bài 1
+          </button>
+          <button
+            class="nav-link"
+            id="v-pills-profile-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#v-pills-profile"
+            type="button"
+            role="tab"
+            aria-controls="v-pills-profile"
+            aria-selected="false">
+            Bài 2
+          </button>
+          <button
+            class="nav-link"
+            id="v-pills-messages-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#v-pills-messages"
+            type="button"
+            role="tab"
+            aria-controls="v-pills-messages"
+            aria-selected="false">
+            Bài 3
+          </button>
+          <button
+            class="nav-link"
+            id="v-pills-settings-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#v-pills-settings"
+            type="button"
+            role="tab"
+            aria-controls="v-pills-settings"
+            aria-selected="false">
+            Bài 4
+          </button>
+        </div>
+        <div class="tab-content w-75" id="v-pills-tabContent">
+          <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+            <h2>Quản lý tuyển sinh</h2>
+            <div class="row">
+              <div class="col-4 my-3">
+                <input type="number" class="form-control" id="txtDiemChuan" placeholder="Điểm chuẩn" />
+              </div>
+
+              <div class="col-4 my-3">
+                <select class="form-select" aria-label="Default select example" id="slDoiTuong">
+                  <option value="0">Chọn khu vực</option>
+                  <option value="2">A</option>
+                  <option value="1">B</option>
+                  <option value="0.5">C</option>
+                </select>
+              </div>
+              <div class="col-4 my-3">
+                <select class="form-select" aria-label="Default select example" id="slKhuVuc">
+                  <option value="0">Chọn Đối tượng</option>
+                  <option value="2.5">1</option>
+                  <option value="1.5">2</option>
+                  <option value="1">3</option>
+                </select>
+              </div>
+              <div class="col-4 my-3">
+                <input type="number" class="form-control" id="txtDiemMon1" placeholder="Điểm môn thứ 1" />
+              </div>
+              <div class="col-4 my-3">
+                <input type="number" class="form-control" id="txtDiemMon2" placeholder="Điểm môn thứ 2" />
+              </div>
+              <div class="col-4 my-3">
+                <input type="number" class="form-control" id="txtDiemMon3" placeholder="Điểm môn thứ 3" />
+              </div>
+
+              <div class="col-3"><button id="btnQLTS" class="btn btn-primary rounded-pill my-3">Tính</button></div>
+            </div>
+
+            <div class="alert alert-danger">
+              <a><i class="fa-regular fa-hand-point-right"></i> </a>
+              <span id="ketQua1"></span>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+            <h2>Tính tiền điện</h2>
+            <div class="row my-3">
+              <div class="col-6"><input type="text" placeholder="Nhập họ tên" id="txtB2Hoten" class="form-control" /></div>
+              <div class="col-6"><input type="number" placeholder="Nhập số kw" id="NB2kw" class="form-control" /></div>
+              <div class="col-4">
+                <button id="btnTinhTienDien" class="btn btn-primary rounded-pill my-3">Tính tiền điện</button>
+              </div>
+            </div>
+            <div class="alert alert-danger">
+              <a><i class="fa-regular fa-hand-point-right"></i> </a>
+              <span id="ketQua2"></span>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+            <h2>Tính thuế thu nhập cá nhân</h2>
+            <div class="row my-3">
+              <div class="col-4"><input type="text" placeholder="Nhập họ tên" id="txtB3Hoten" class="form-control" /></div>
+              <div class="col-4">
+                <input type="number" placeholder="Nhập tổng thu nhập năm" id="NB3TThuNhapN" class="form-control" />
+              </div>
+              <div class="col-4">
+                <input type="number" placeholder="Nhập số người phụ thuộc" id="NB3SoNguoi" class="form-control" />
+              </div>
+              <div class="col-4">
+                <button id="btnTinhTienThue" class="btn btn-primary rounded-pill my-3">Tính tiền thuế</button>
+              </div>
+            </div>
+            <div class="alert alert-danger">
+              <a><i class="fa-regular fa-hand-point-right"></i> </a>
+              <span id="ketQua3"></span>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+      integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+      crossorigin="anonymous"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
