@@ -28,34 +28,6 @@
   </head>
 
   <body>
-    <h2>Tính tiền cáp</h2>
-    <div class="row my-3">
-      <div class="col-4">
-        <select id="slLoaiKH" class="form-select" onchange="myFunction()">
-          <option value="0">Chon loại khách hàng</option>
-          <option value="1">Nhà Dân</option>
-          <option value="2">Doanh Nghiệp</option>
-        </select>
-      </div>
-      <div class="col-4">
-        <input type="text" placeholder="Nhập mã khách hàng" id="txtB4MaKH" class="form-control" />
-      </div>
-      <div class="col-4">
-        <input type="number" placeholder="Nhập số kênh cao cấp" id="nB4SoKenhCC" class="form-control" />
-      </div>
-      <div class="col-4 mt-3" style="display: none" id="DivSoketNoi">
-        <input type="number" placeholder="Nhập số kết nối" id="nB4SoKetNoi" class="form-control" />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-4">
-        <button id="btnTinhTienCap" class="btn btn-primary rounded-pill mb-3">Tính Tiền Cáp</button>
-      </div>
-    </div>
-    <div class="alert alert-danger">
-      <a><i class="fa-regular fa-hand-point-right"></i> </a>
-      <span id="ketQua4"></span>
-    </div>
     <div class="container w-50">
       <div class="d-flex align-items-start">
         <div class="nav flex-column nav-pills me-3 w-25" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -179,7 +151,36 @@
               <span id="ketQua3"></span>
             </div>
           </div>
-          <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+          <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+            <h2>Tính tiền cáp</h2>
+            <div class="row my-3">
+              <div class="col-4">
+                <select id="slLoaiKH" class="form-select" onchange="myFunction()">
+                  <option value="0">Chon loại khách hàng</option>
+                  <option value="1">Nhà Dân</option>
+                  <option value="2">Doanh Nghiệp</option>
+                </select>
+              </div>
+              <div class="col-4">
+                <input type="text" placeholder="Nhập mã khách hàng" id="txtB4MaKH" class="form-control" />
+              </div>
+              <div class="col-4">
+                <input type="number" placeholder="Nhập số kênh cao cấp" id="nB4SoKenhCC" class="form-control" />
+              </div>
+              <div class="col-4 mt-3" style="display: none" id="DivSoketNoi">
+                <input type="number" placeholder="Nhập số kết nối" id="nB4SoKetNoi" class="form-control" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <button id="btnTinhTienCap" class="btn btn-primary rounded-pill mb-3">Tính Tiền Cáp</button>
+              </div>
+            </div>
+            <div class="alert alert-danger">
+              <a><i class="fa-regular fa-hand-point-right"></i> </a>
+              <span id="ketQua4"></span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
