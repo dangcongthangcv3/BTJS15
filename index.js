@@ -32,38 +32,34 @@ function dau(DiemMon1, DiemMon2, DiemMon3, DiemKhuVuc, DoiTuong,DiemChuan){
 
 // Bài 2:
 document.getElementById('btnTinhTienDien').onclick = function(){
+    //input txtHoten(string), nKW(Number)
     var txtTen = getID('txtB2Hoten').value
     var nKW = Number(getID('NB2kw').value)
+    //Output tong(Number)
     var tong = 0
+
+    //Xử lý
     if(nKW ==0){
         alert('Số kw không hợp lệ! Vui lòng nhập lại')
         document.getElementById('ketQua2').innerHTML = 'Họ tên:' +txtTen+' ; Tiền điện: '+0
     }
     else if(nKW>0 && nKW <=50){
         tong = nKW*500
-        var a = tong.toLocaleString();
-        document.getElementById('ketQua2').innerHTML = 'Họ tên:' +txtTen+' ; Tiền điện: '+a
     }
     else if(nKW >50 && nKW <=100){
         tong = 50*500 + (nKW - 50)*650
-        var a = tong.toLocaleString();
-        document.getElementById('ketQua2').innerHTML = 'Họ tên:' +txtTen+' ; Tiền điện: '+a
     }
     else if(nKW >100 && nKW <=200){
         tong = 50*500 + 50*650 + (nKW-100)*850
-        var a = tong.toLocaleString();
-        document.getElementById('ketQua2').innerHTML = 'Họ tên:' +txtTen+' ; Tiền điện: '+a
     }
     else if(nKW >200 && nKW <=350){
         tong = 50*500 + 50*650+ 100*850 + (nKW-200)*1100
-        var a = tong.toLocaleString();
-        document.getElementById('ketQua2').innerHTML = 'Họ tên:' +txtTen+' ; Tiền điện: '+a
     }
     else{
         tong = 50*500 + 50*650+ 100*850 + 150*1100 + (nKW-350)*1300
-        var a = tong.toLocaleString();
-        document.getElementById('ketQua2').innerHTML = 'Họ tên:' +txtTen+' ; Tiền điện: '+a
     }
+    var KQ = tong.toLocaleString();
+    document.getElementById('ketQua2').innerHTML = 'Họ tên:' +txtTen+' ; Tiền điện: '+KQ
     
 }
 
@@ -72,87 +68,92 @@ document.getElementById('btnTinhTienThue').onclick = function(){
     var B3Ten = getID('txtB3Hoten').value
     var B3TongThuNhap = Number(getID('NB3TThuNhapN').value)
     var B3SoNguoi = Number(getID('NB3SoNguoi').value)
-    var CN =0
-    var a = 0
+
+    // OUTPUT: KQ(Number)
+    var KQ =0
+    var B3ThueSuat = 0
     // min Tổng thu nhập: 4000001
-    if(B3TongThuNhap<=4000000){
+    var B3ThuNhapChieuThue = B3TongThuNhap - 4000000 - B3SoNguoi*1600000
+
+    if(B3ThuNhapChieuThue<=4000000){
         alert('Số tiền thu nhập không hợp lệ')
         getID('ketQua3').innerHTML = 'Họ tên: '+B3Ten+'; Tiền thuế thu nhập cá nhân: '+CN+' VND'
     }
-    else if(B3TongThuNhap>4000000&&B3TongThuNhap<=60000000){
-        debugger
-        a = Number((B3TongThuNhap - 4000000 - B3SoNguoi*1600000)*0.05)
-        CN = a.toLocaleString()
-        if(a>0){
-            getID('ketQua3').innerHTML = 'Họ tên: '+B3Ten+'; Tiền thuế thu nhập cá nhân: '+CN+' VND'
-        }
-        else{
-            alert('Số tiền thu nhập không hợp lệ')
-            getID('ketQua3').innerHTML = 'Họ tên: '+B3Ten+'; Tiền thuế thu nhập cá nhân: '+0+' VND'
-        }
+    else if(B3ThuNhapChieuThue>4000000&&B3ThuNhapChieuThue<=60000000){
+        B3ThueSuat = 0.05
+        
     }
-    else if(B3TongThuNhap>60000000&&B3TongThuNhap<=120000000){
-        CN = ((B3TongThuNhap - 4000000 - B3SoNguoi*1600000)*0.1).toLocaleString()
-        getID('ketQua3').innerHTML = 'Họ tên: '+B3Ten+'; Tiền thuế thu nhập cá nhân: '+CN+' VND'
+    else if(B3ThuNhapChieuThue>60000000&&B3ThuNhapChieuThue<=120000000){
+        B3ThueSuat = 0.1
     }
-    else if(B3TongThuNhap>120000000&&B3TongThuNhap<=210000000){
-        CN = ((B3TongThuNhap - 4000000 - B3SoNguoi*1600000)*0.15).toLocaleString()
-        getID('ketQua3').innerHTML = 'Họ tên: '+B3Ten+'; Tiền thuế thu nhập cá nhân: '+CN+' VND'
+    else if(B3ThuNhapChieuThue>120000000&&B3ThuNhapChieuThue<=210000000){
+        B3ThueSuat = 0.15
     }
-    else if(B3TongThuNhap>210000000&&B3TongThuNhap<=384000000){
-        CN = ((B3TongThuNhap - 4000000 - B3SoNguoi*1600000)*0.2).toLocaleString()
-        getID('ketQua3').innerHTML = 'Họ tên: '+B3Ten+'; Tiền thuế thu nhập cá nhân: '+CN+' VND'
+    else if(B3ThuNhapChieuThue>210000000&&B3ThuNhapChieuThue<=384000000){
+        B3ThueSuat = 0.2
     }
-    else if(B3TongThuNhap>384000000&&B3TongThuNhap<=624000000){
-        CN = ((B3TongThuNhap - 4000000 - B3SoNguoi*1600000)*0.25).toLocaleString()
-        getID('ketQua3').innerHTML = 'Họ tên: '+B3Ten+'; Tiền thuế thu nhập cá nhân: '+CN+' VND'
+    else if(B3ThuNhapChieuThue>384000000&&B3ThuNhapChieuThue<=624000000){
+        B3ThueSuat = 0.25
     }
-    else if(B3TongThuNhap>624000000&&B3TongThuNhap<=960000000){
-        CN = ((B3TongThuNhap - 4000000 - B3SoNguoi*1600000)*0.3).toLocaleString()
-        getID('ketQua3').innerHTML = 'Họ tên: '+B3Ten+'; Tiền thuế thu nhập cá nhân: '+CN+' VND'
+    else if(B3ThuNhapChieuThue>624000000&&B3ThuNhapChieuThue<=960000000){
+        B3ThueSuat = 0.3
     }
-    else if(B3TongThuNhap>960000000){
-        CN = ((B3TongThuNhap - 4000000 - B3SoNguoi*1600000)*0.35).toLocaleString()
-        getID('ketQua3').innerHTML = 'Họ tên: '+B3Ten+'; Tiền thuế thu nhập cá nhân: '+CN+' VND'
+    else{
+        B3ThueSuat = 0.35
+    }
+    KQ = (B3ThuNhapChieuThue*B3ThueSuat).toLocaleString()
+    if(B3ThuNhapChieuThue>0){
+        getID('ketQua3').innerHTML = 'Họ tên: '+B3Ten+'; Tiền thuế thu nhập cá nhân: '+KQ+' VND'
+    }
+    else{
+        alert('Số tiền thu nhập không hợp lệ')
+        getID('ketQua3').innerHTML = 'Họ tên: '+B3Ten+'; Tiền thuế thu nhập cá nhân: '+0+' VND'
     }
 }
 
 
 //Bài 4
 document.getElementById('btnTinhTienCap').onclick = function(){
+    //input LoaiKH(string), MaKH(String), SoKenhCC(Number), SoKN(Numer)
     var LoaiKH = getID('slLoaiKH').value
     var MaKH = getID('txtB4MaKH').value
     var SoKenhCC = Number(getID('nB4SoKenhCC').value)
     var SoKN= Number(getID('nB4SoKetNoi').value)
+
+    // Number sang Dollar
+    const USDollar = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+      });
+
+      // Loại bỏ trường hợp Chọn sai loại khách hàng
     if(LoaiKH==0){
         alert('Hãy chọn loại khách hàng')
         getID('ketQua4').innerHTML = 'Mã khách hàng: '+MaKH+'; Tiền cáp: '+0
     }
+
+    //Khai báo Tong là tiền cáp, TienDollar là Tiền cáp dạng Dollar
     var tong = 0
+    var tienDollar =0
+    // Nếu Loại khách hàng là Nhà dân
     if(LoaiKH ==1){
         tong = SoKenhCC*7.5 + 4.5 + 20.5
-        const USDollar = new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-          });
-        var t = USDollar.format(tong)
-          
-        getID('ketQua4').innerHTML = 'Mã khách hàng: '+MaKH+'; Tiền cáp: '+t
+        var tienDollar = USDollar.format(tong)
+        getID('ketQua4').innerHTML = 'Mã khách hàng: '+MaKH+'; Tiền cáp: '+tienDollar
     }
+    //Nếu là Doanh nhân
     else if(LoaiKH ==2){
+        //10 kết nối đầu là 75
         if(SoKN>=0 &&SoKN<=10){
             tong = SoKenhCC*50 + 15 + 75
         }
+        //sau 10 kết nối tính thêm 1 kết nối thêm 5$
         else{
             tong = SoKenhCC*50 + 15 + 10*7.5 + (SoKN-10)*5
         }
-        const USDollar = new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-          });
-        var t = USDollar.format(tong)
-          
-        getID('ketQua4').innerHTML = 'Mã khách hàng: '+MaKH+'; Tiền cáp: '+t
+
+        var tienDollar = USDollar.format(tong)
+        getID('ketQua4').innerHTML = 'Mã khách hàng: '+MaKH+'; Tiền cáp: '+tienDollar
     }
     
 }
