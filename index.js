@@ -124,7 +124,6 @@ document.getElementById('btnTinhTienCap').onclick = function(){
     var MaKH = getID('txtB4MaKH').value
     var SoKenhCC = Number(getID('nB4SoKenhCC').value)
     var SoKN= Number(getID('nB4SoKetNoi').value)
-    
     if(LoaiKH==0){
         alert('Hãy chọn loại khách hàng')
         getID('ketQua4').innerHTML = 'Mã khách hàng: '+MaKH+'; Tiền cáp: '+0
