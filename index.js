@@ -123,7 +123,8 @@ document.getElementById('btnTinhTienCap').onclick = function(){
     var LoaiKH = getID('slLoaiKH').value
     var MaKH = getID('txtB4MaKH').value
     var SoKenhCC = Number(getID('nB4SoKenhCC').value)
-    debugger    
+    var SoKN= Number(getID('nB4SoKetNoi').value)
+    
     if(LoaiKH==0){
         alert('Hãy chọn loại khách hàng')
         getID('ketQua4').innerHTML = 'Mã khách hàng: '+MaKH+'; Tiền cáp: '+0
@@ -131,6 +132,21 @@ document.getElementById('btnTinhTienCap').onclick = function(){
     var tong = 0
     if(LoaiKH ==1){
         tong = SoKenhCC*7.5 + 4.5 + 20.5
+        const USDollar = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+          });
+        var t = USDollar.format(tong)
+          
+        getID('ketQua4').innerHTML = 'Mã khách hàng: '+MaKH+'; Tiền cáp: '+t
+    }
+    else if(LoaiKH ==2){
+        if(SoKN>=0 &&SoKN<=10){
+            tong = SoKenhCC*50 + 15 + 75
+        }
+        else{
+            tong = SoKenhCC*50 + 15 + 10*7.5 + (SoKN-10)*5
+        }
         const USDollar = new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'USD',
