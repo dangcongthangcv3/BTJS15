@@ -71,38 +71,36 @@ document.getElementById('btnTinhTienThue').onclick = function(){
 
     // OUTPUT: KQ(Number)
     var KQ =0
-    var B3ThueSuat = 0
     // min Tổng thu nhập: 4000001
-    var B3ThuNhapChieuThue = B3TongThuNhap - 4000000 - B3SoNguoi*1600000
+    let TNCT = B3TongThuNhap - 4000000 - B3SoNguoi*1600000
 
-    if(B3ThuNhapChieuThue<=4000000){
+    if(TNCT<=4000000){
         alert('Số tiền thu nhập không hợp lệ')
         getID('ketQua3').innerHTML = 'Họ tên: '+B3Ten+'; Tiền thuế thu nhập cá nhân: '+CN+' VND'
     }
-    else if(B3ThuNhapChieuThue>4000000&&B3ThuNhapChieuThue<=60000000){
-        B3ThueSuat = 0.05
+    else if(TNCT>4000000&&TNCT<=60000000){
+        KQ = (TNCT*0.05).toLocaleString()
         
     }
-    else if(B3ThuNhapChieuThue>60000000&&B3ThuNhapChieuThue<=120000000){
-        B3ThueSuat = 0.1
+    else if(TNCT>60000000&&TNCT<=120000000){
+        KQ = (60000000*0.05 +(TNCT-60000000)*0.1).toLocaleString()
     }
-    else if(B3ThuNhapChieuThue>120000000&&B3ThuNhapChieuThue<=210000000){
-        B3ThueSuat = 0.15
+    else if(TNCT>120000000&&TNCT<=210000000){   
+        KQ = (60000000*0.05+60000000*0.1+(TNCT-120000000)*0.15).toLocaleString()
     }
-    else if(B3ThuNhapChieuThue>210000000&&B3ThuNhapChieuThue<=384000000){
-        B3ThueSuat = 0.2
+    else if(TNCT>210000000&&TNCT<=384000000){
+        KQ = (60000000*0.05+60000000*0.1+90000000*0.15 +(TNCT - 210000000)*0.2).toLocaleString()
     }
-    else if(B3ThuNhapChieuThue>384000000&&B3ThuNhapChieuThue<=624000000){
-        B3ThueSuat = 0.25
+    else if(TNCT>384000000&&TNCT<=624000000){
+        KQ = (60000000*0.05+60000000*0.1+90000000*0.15 +174000000*0.2+(TNCT-384000000)*0.25).toLocaleString()
     }
-    else if(B3ThuNhapChieuThue>624000000&&B3ThuNhapChieuThue<=960000000){
-        B3ThueSuat = 0.3
+    else if(TNCT>624000000&&TNCT<=960000000){
+        KQ = (60000000*0.05+60000000*0.1+90000000*0.15 +174000000*0.2+ 240000000*0.25 + (TNCT-624000000)*0.3).toLocaleString()
     }
     else{
-        B3ThueSuat = 0.35
+        KQ = (60000000*0.05+60000000*0.1+90000000*0.15 +174000000*0.2+ 240000000*0.25 +336000000*0.3 +(TNCT-960000000)*0.35).toLocaleString()
     }
-    KQ = (B3ThuNhapChieuThue*B3ThueSuat).toLocaleString()
-    if(B3ThuNhapChieuThue>0){
+    if(TNCT>0){
         getID('ketQua3').innerHTML = 'Họ tên: '+B3Ten+'; Tiền thuế thu nhập cá nhân: '+KQ+' VND'
     }
     else{
@@ -110,6 +108,7 @@ document.getElementById('btnTinhTienThue').onclick = function(){
         getID('ketQua3').innerHTML = 'Họ tên: '+B3Ten+'; Tiền thuế thu nhập cá nhân: '+0+' VND'
     }
 }
+
 
 
 //Bài 4
